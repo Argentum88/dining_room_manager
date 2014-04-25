@@ -1,0 +1,15 @@
+Hello cook!!! <br/>
+<table class="table">
+    <thead>
+        <tr>
+            <td>user id</td>
+            <td>item id</td>
+        </tr>
+    </thead>
+    <?php foreach($listOrders as $order): ?>
+        <tr>
+            <td><?php echo $order['user_id'] ?></td>
+            <td><?php echo $order['item_id'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
