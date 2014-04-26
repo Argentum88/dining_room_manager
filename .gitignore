@@ -1,3 +1,4 @@
 app/cache/
 app/config/development/
+tests/_log/*
 .idea/*
