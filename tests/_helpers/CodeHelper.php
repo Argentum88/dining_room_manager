@@ -5,4 +5,7 @@ namespace Codeception\Module;
 
 class CodeHelper extends \Codeception\Module
 {
+    public function seeMyVar($var){
+        $this->debug($var);
+    }
 }

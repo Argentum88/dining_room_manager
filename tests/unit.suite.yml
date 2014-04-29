@@ -5,4 +5,9 @@
 
 class_name: CodeGuy
 modules:
-    enabled: [CodeHelper]
+    enabled: [Db, Phalcon1, CodeHelper]
+    config:
+        Phalcon1:
+           bootstrap: 'app/config/bootstrap_for_test.php'
+           cleanup: true
+           savepoints: true
