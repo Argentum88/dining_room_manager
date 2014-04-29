@@ -33,7 +33,10 @@
             <a class="navbar-brand" href="/index/index">Dining room manager</a>
         </div>
 
-        <?php $this->menuGenerator->genMenu(); ?>
+        <?php
+            $template = $this->menuGenerator->genTemplateForMenu();
+            $this->partial("tpl/$template");
+        ?>
 
     </div>
 </div>
