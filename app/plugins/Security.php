@@ -33,7 +33,10 @@ class Security extends Plugin
         return $acl;
     }
 
-    public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+    /**
+     * @var $dispatcher Dispatcher
+     **/
+    public function beforeDispatch(Event $event, $dispatcher)
     {
         $role = $this->session->get('auth')['role'];
         if (!$role) {
