@@ -1,6 +1,6 @@
 <?php
 
-class UserLoginPage
+class LoginPage
 {
     // include url of current page
     static $URL = '/';
@@ -45,7 +45,7 @@ class UserLoginPage
     {
         $I = $this->webGuy;
 
-        $I->wantTo('log in as cook');
+        $I->wantTo('log in');
         $I->amOnPage(self::$URL);
         $I->fillField('email', $email);
         $I->fillField('password', $password);
