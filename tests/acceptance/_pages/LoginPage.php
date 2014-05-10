@@ -34,7 +34,7 @@ class LoginPage
     }
 
     /**
-     * @return UserLoginPage
+     * @return LoginPage
      */
     public static function of(WebGuy $I)
     {
@@ -50,6 +50,7 @@ class LoginPage
         $I->fillField('email', $email);
         $I->fillField('password', $password);
         $I->click(self::$loginButton);
+        $I->wait('1');
         $I->see("Welcome $email");
     }
 }

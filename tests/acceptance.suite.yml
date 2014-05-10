@@ -11,8 +11,11 @@
 class_name: WebGuy
 modules:
     enabled:
-        - PhpBrowser
+        - WebDriver
         - WebHelper
     config:
-        PhpBrowser:
+        WebDriver:
             url: 'http://dining-room-manager.loc/'
+            browser: firefox
+            wait: 1
+            restart: true
