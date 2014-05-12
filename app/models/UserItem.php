@@ -19,6 +19,12 @@ class UserItem extends \Phalcon\Mvc\Model
     protected $item_id;
      
     /**
+     *
+     * @var integer
+     */
+    protected $quantity;
+     
+    /**
      * Method to set the value of field user_id
      *
      * @param integer $user_id
@@ -45,6 +51,19 @@ class UserItem extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field quantity
+     *
+     * @param integer $quantity
+     * @return $this
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field user_id
      *
      * @return integer
@@ -65,13 +84,24 @@ class UserItem extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field quantity
+     *
+     * @return integer
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
      * Independent Column Mapping.
      */
     public function columnMap()
     {
         return array(
             'user_id' => 'user_id', 
-            'item_id' => 'item_id'
+            'item_id' => 'item_id', 
+            'quantity' => 'quantity'
         );
     }
 

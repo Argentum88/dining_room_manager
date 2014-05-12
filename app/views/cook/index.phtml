@@ -1,15 +1,15 @@
-Hello cook!!! <br/>
+Hello cook!!! <br/> <br/>
 <table class="table">
     <thead>
         <tr>
-            <td>user id</td>
-            <td>item id</td>
+            <td>Вид блюда</td>
+            <td>Количество</td>
         </tr>
     </thead>
-    <?php foreach($listOrders as $order): ?>
+    <?php foreach($listOrders as $dishes=>$quantity): ?>
         <tr>
-            <td><?php echo $order['user_id'] ?></td>
-            <td><?php echo $order['item_id'] ?></td>
+            <td><?php echo $dishes ?></td>
+            <td><?php echo $quantity ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

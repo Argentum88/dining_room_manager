@@ -17,7 +17,7 @@ dining_room.directive('items', function(){
                 });
             };
             $scope.takeOrder = function(){
-                $http.get('/Customer/takeOrder?id='+this.item.id);
+                $http.get('/Customer/takeOrder?id='+this.item.id+'&quantity='+document.getElementById('quantity').value);
             };
         }
     }

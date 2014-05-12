@@ -31,6 +31,7 @@ class CustomerController extends ControllerBase
         $user_item = new UserItem;
         $user_item->setItemId($dishes->getId());
         $user_item->setUserId($this->session->get('auth')['id']);
+        $user_item->setQuantity($_GET['quantity']);
         $user_item->save();
         return $this->response->setStatusCode(200, 'Ok');
     }
