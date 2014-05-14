@@ -1,6 +1,6 @@
-var dining_room = angular.module('dining_room', []);
+var choiceOfDishes = angular.module('choiceOfDishes', []);
 
-dining_room.directive('items', function(){
+choiceOfDishes.directive('items', function(){
     return {
         restrict: 'E',
         template: '<div ng-include="templateUrl"></div>',
