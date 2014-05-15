@@ -23,6 +23,11 @@ class UserItem extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $quantity;
+
+    public function initialize()
+    {
+        $this->belongsTo('item_id', 'Item', 'id');
+    }
      
     /**
      * Method to set the value of field user_id
@@ -109,10 +114,7 @@ class UserItem extends \Phalcon\Mvc\Model
     {
         $resultOfConverting = array();
         foreach($orders as $order) {
-            $dishes = Item::findFirst(array(
-                'id=:id:',
-                'bind'=>array('id' => $order->getItemId())
-            ))->getName();
+            $dishes = $order->Item->getName();
             if (!array_key_exists("$dishes", $resultOfConverting)) {
                 $resultOfConverting["$dishes"] = $order->getQuantity();
             } else {
