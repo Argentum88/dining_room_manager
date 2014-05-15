@@ -1,15 +1,55 @@
-Hello cook!!! <br/> <br/>
-<table class="table">
-    <thead>
-        <tr>
-            <td>Вид блюда</td>
-            <td>Количество</td>
-        </tr>
-    </thead>
-    <?php foreach($listOrders as $dishes=>$quantity): ?>
-        <tr>
-            <td><?php echo $dishes ?></td>
-            <td><?php echo $quantity ?></td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+<script src="/public/js/order.js"></script>
+
+<div ng-app="order">
+   <div ng-controller="orderController">
+
+       <div class="modal fade" id="orderModal" tabindex="-1" role="dialog">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                       <h4 class="modal-title" id="modalLabel">Заказ</h4>
+                   </div>
+                   <div class="modal-body">
+                       <table class="table">
+                           <thead>
+                           <tr>
+                               <td>Вид блюда</td>
+                               <td>Количество</td>
+                           </tr>
+                           </thead>
+                               <tr ng-repeat="item in order">
+                                   <td>{{item.dishes}}</td>
+                                   <td>{{item.quantity}}</td>
+                               </tr>
+                       </table>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-primary">Выдано</button>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+        <div class="search-order">
+            <label for="search-order">Поиск заказа</label>
+            <input type="text" id="search-order" placeholder="логин клиента">
+            <button ng-click="goSearch()">Поиск</button>
+        </div>
+    </div>
+    Hello cook!!! <br/> <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Вид блюда</td>
+                <td>Количество</td>
+            </tr>
+        </thead>
+        <?php foreach($listOrders as $dishes=>$quantity): ?>
+            <tr>
+                <td><?php echo $dishes ?></td>
+                <td><?php echo $quantity ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

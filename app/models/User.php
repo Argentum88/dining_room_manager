@@ -29,6 +29,11 @@ class User extends \Phalcon\Mvc\Model
      * @var string
      */
     protected $role;
+
+    public function initialize()
+    {
+        $this->hasMany('id', 'UserItem', 'user_id');
+    }
      
     /**
      * Method to set the value of field id
