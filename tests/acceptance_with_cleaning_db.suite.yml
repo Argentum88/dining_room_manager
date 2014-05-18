@@ -1,0 +1,19 @@
+class_name: AcdbGuy
+modules:
+    enabled:
+        - WebDriver
+        - AcdbHelper
+        - Db
+    config:
+        WebDriver:
+            url: 'http://dining-room-manager.loc/'
+            browser: firefox
+            wait: 1
+            restart: true
+        Db:
+            dsn: 'mysql:host=localhost;dbname=dining_room_manager'
+            user: 'root'
+            password: '1234'
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: true

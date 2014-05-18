@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.0
+-- version 4.1.13
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 25, 2014 at 08:13 AM
--- Server version: 5.6.15
--- PHP Version: 5.4.24
+-- Хост: localhost
+-- Время создания: Май 18 2014 г., 19:08
+-- Версия сервера: 5.6.15-log
+-- Версия PHP: 5.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `dining_room_manager`
+-- База данных: `test`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Структура таблицы `item`
 --
 
 CREATE TABLE IF NOT EXISTS `item` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `item` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `item`
+-- Дамп данных таблицы `item`
 --
 
 INSERT INTO `item` (`id`, `name`, `item_type_id`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `item` (`id`, `name`, `item_type_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_type`
+-- Структура таблицы `item_type`
 --
 
 CREATE TABLE IF NOT EXISTS `item_type` (
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `item_type` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `item_type`
+-- Дамп данных таблицы `item_type`
 --
 
 INSERT INTO `item_type` (`id`, `name`, `parent`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `item_type` (`id`, `name`, `parent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Структура таблицы `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `user`
+-- Дамп данных таблицы `user`
 --
 
 INSERT INTO `user` (`id`, `password`, `email`, `role`) VALUES
@@ -93,34 +93,35 @@ INSERT INTO `user` (`id`, `password`, `email`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_item`
+-- Структура таблицы `user_item`
 --
 
 CREATE TABLE IF NOT EXISTS `user_item` (
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `quantity` int(3) unsigned NOT NULL,
   PRIMARY KEY (`user_id`,`item_id`),
   KEY `item_id` (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `item`
+-- Ограничения внешнего ключа таблицы `item`
 --
 ALTER TABLE `item`
 ADD CONSTRAINT `item_type` FOREIGN KEY (`item_type_id`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `item_type`
+-- Ограничения внешнего ключа таблицы `item_type`
 --
 ALTER TABLE `item_type`
 ADD CONSTRAINT `item_type_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `user_item`
+-- Ограничения внешнего ключа таблицы `user_item`
 --
 ALTER TABLE `user_item`
 ADD CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

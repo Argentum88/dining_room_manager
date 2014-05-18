@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Апр 27 2014 г., 22:21
--- Версия сервера: 5.6.15
+-- Время создания: Май 18 2014 г., 19:08
+-- Версия сервера: 5.6.15-log
 -- Версия PHP: 5.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- База данных: `dining_room_manager`
+-- База данных: `test`
 --
 
 -- --------------------------------------------------------
@@ -99,16 +99,10 @@ INSERT INTO `user` (`id`, `password`, `email`, `role`) VALUES
 CREATE TABLE IF NOT EXISTS `user_item` (
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `quantity` int(3) unsigned NOT NULL,
   PRIMARY KEY (`user_id`,`item_id`),
   KEY `item_id` (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `user_item`
---
-
-INSERT INTO `user_item` (`user_id`, `item_id`) VALUES
-(2, 3);
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -118,20 +112,20 @@ INSERT INTO `user_item` (`user_id`, `item_id`) VALUES
 -- Ограничения внешнего ключа таблицы `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `item_type` FOREIGN KEY (`item_type_id`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `item_type` FOREIGN KEY (`item_type_id`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `item_type`
 --
 ALTER TABLE `item_type`
-  ADD CONSTRAINT `item_type_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `item_type_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `user_item`
 --
 ALTER TABLE `user_item`
-  ADD CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

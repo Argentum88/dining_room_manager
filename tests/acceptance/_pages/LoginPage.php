@@ -26,24 +26,24 @@ class LoginPage
     /**
      * @var WebGuy;
      */
-    protected $webGuy;
+    protected $Guy;
 
-    public function __construct(WebGuy $I)
+    public function __construct(\Codeception\AbstractGuy $I)
     {
-        $this->webGuy = $I;
+        $this->Guy = $I;
     }
 
     /**
      * @return LoginPage
      */
-    public static function of(WebGuy $I)
+    public static function of(\Codeception\AbstractGuy $I)
     {
         return new static($I);
     }
 
     public function login($email, $password)
     {
-        $I = $this->webGuy;
+        $I = $this->Guy;
 
         $I->wantTo('log in');
         $I->amOnPage(self::$URL);

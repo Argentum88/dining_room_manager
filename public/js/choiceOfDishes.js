@@ -16,8 +16,8 @@ choiceOfDishes.directive('items', function(){
                         $scope.templateUrl = '/public/template/itemDishes.phtml';
                 });
             };
-            $scope.takeOrder = function(){
-                $http.get('/Customer/takeOrder?id='+this.item.id+'&quantity='+document.getElementById('quantity').value);
+            $scope.takeOrder = function(index){
+                $http.get('/Customer/takeOrder?id='+this.item.id+'&quantity='+document.getElementsByClassName('quantity')[index].value);
             };
         }
     }
