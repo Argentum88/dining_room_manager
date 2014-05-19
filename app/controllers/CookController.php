@@ -17,4 +17,18 @@ class CookController extends ControllerBase
         $order = $user->UserItem;
         return $this->response->setContent(json_encode(UserItem::convertOrders($order), JSON_UNESCAPED_UNICODE));
     }
+
+    public function deleteOrderAction()
+    {
+        $login = $this->request->getQuery('login');
+        $user = User::findFirst(array(
+            'email=:login:',
+            'bind'=>array('login' => $login)
+        ));
+        $orders = $user->UserItem;
+        foreach ($orders as $order) {
+            $order->delete();
+        }
+        $this->view->disable();
+    }
 }
